@@ -6,6 +6,10 @@
 
 The Telemost plugin for Mattermost allows users to create and join Telemost video meetings directly from Mattermost channels. This plugin integrates with Yandex's Telemost video conferencing service, providing seamless video meeting capabilities within your Mattermost workspace.
 
+<img width="751" height="218" alt="image" src="https://github.com/user-attachments/assets/00d4d242-706c-43f7-a358-66b619a688bb" />
+
+
+
 ## Features
 
 - **🎥 Create Meetings**: Start Telemost video meetings with a simple slash command
