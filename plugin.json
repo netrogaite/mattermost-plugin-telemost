@@ -1,0 +1,96 @@
+{
+    "id": "com.mattermost.plugin-telemost",
+    "name": "Telemost",
+    "description": "Create and join Telemost video meetings directly from Mattermost.",
+    "homepage_url": "https://github.com/mattermost/mattermost-plugin-telemost",
+    "support_url": "https://github.com/mattermost/mattermost-plugin-telemost/issues",
+    "icon_path": "assets/starter-template-icon.svg",
+    "min_server_version": "6.2.1",
+    "server": {
+        "executables": {
+            "linux-amd64": "server/dist/plugin-linux-amd64",
+            "linux-arm64": "server/dist/plugin-linux-arm64",
+            "darwin-amd64": "server/dist/plugin-darwin-amd64",
+            "darwin-arm64": "server/dist/plugin-darwin-arm64",
+            "windows-amd64": "server/dist/plugin-windows-amd64.exe"
+        }
+    },
+    "webapp": {
+        "bundle_path": "webapp/dist/main.js"
+    },
+    "settings_schema": {
+        "header": "Configure your Telemost API settings below. You can get your OAuth token from the [Yandex Cloud Console](https://cloud.yandex.com/).",
+        "footer": "To report an issue, make a suggestion or a contribution, [check the repository](https://github.com/mattermost/mattermost-plugin-telemost).",
+        "settings": [
+            {
+                "key": "YandexClientID",
+                "display_name": "Yandex OAuth Client ID",
+                "type": "text",
+                "help_text": "The OAuth client ID from your Yandex application. Get this from the Yandex Cloud Console.",
+                "placeholder": "Enter your Yandex OAuth client ID",
+                "default": ""
+            },
+            {
+                "key": "SiteURL",
+                "display_name": "Mattermost Site URL",
+                "type": "text",
+                "help_text": "The URL of your Mattermost server (e.g., https://mattermost.example.com). Required for OAuth redirects.",
+                "placeholder": "https://mattermost.example.com",
+                "default": ""
+            },
+            {
+                "key": "TelemostOAuthToken",
+                "display_name": "Telemost OAuth Token (Legacy)",
+                "type": "text",
+                "help_text": "Legacy server-side OAuth token. For new installations, use individual user OAuth authentication instead.",
+                "placeholder": "Enter your Telemost OAuth token",
+                "default": ""
+            },
+            {
+                "key": "DefaultWaitingRoomLevel",
+                "display_name": "Default Waiting Room Level",
+                "type": "radio",
+                "help_text": "Default waiting room level for new meetings. PUBLIC: No waiting room, ORGANIZATION: Waiting room for external users, ADMINS: Waiting room for all except organizers.",
+                "options": [
+                    {
+                        "display_name": "Public (No waiting room)",
+                        "value": "PUBLIC"
+                    },
+                    {
+                        "display_name": "Organization (Waiting room for external users)",
+                        "value": "ORGANIZATION"
+                    },
+                    {
+                        "display_name": "Admins (Waiting room for all except organizers)",
+                        "value": "ADMINS"
+                    }
+                ],
+                "default": "PUBLIC"
+            },
+            {
+                "key": "EnableLiveStream",
+                "display_name": "Enable Live Stream",
+                "type": "bool",
+                "help_text": "Enable live streaming capability for meetings. Requires appropriate Telemost plan.",
+                "default": false
+            },
+            {
+                "key": "DefaultLiveStreamAccessLevel",
+                "display_name": "Default Live Stream Access Level",
+                "type": "radio",
+                "help_text": "Default access level for live streams. Only applies if live streaming is enabled.",
+                "options": [
+                    {
+                        "display_name": "Public (For all users)",
+                        "value": "PUBLIC"
+                    },
+                    {
+                        "display_name": "Organization (Only for employees)",
+                        "value": "ORGANIZATION"
+                    }
+                ],
+                "default": "PUBLIC"
+            }
+        ]
+    }
+}
